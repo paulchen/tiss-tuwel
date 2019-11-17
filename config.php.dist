@@ -1,4 +1,8 @@
 <?php
 $vhost = 'tuwel.tuwien.ac.at';
+$host = 'tuwel';
 $name = 'TUWEL';
+$api_username = '';
+$api_password = '';
+$icinga_host = '';
 
