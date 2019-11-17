@@ -1,0 +1,4 @@
+<?php
+$vhost = 'tuwel.tuwien.ac.at';
+$name = 'TUWEL';
+
