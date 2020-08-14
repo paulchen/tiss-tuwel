@@ -1,6 +1,7 @@
 <?php
 $vhost = 'tuwel.tuwien.ac.at';
 $host = 'tuwel';
+$service = 'https';
 $name = 'TUWEL';
 $api_username = '';
 $api_password = '';

@@ -8,7 +8,7 @@ $headers = array(
 );
 $data = array(
         'attrs' => array('state', 'last_check_result', 'last_state_change'),
-        'filter' => "host.name == \"$host\" && service.name == \"vhost https\"",
+        'filter' => "host.name == \"$host\" && service.name == \"$service\"",
 );
 
 $ch = curl_init();
