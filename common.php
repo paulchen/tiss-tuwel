@@ -8,7 +8,7 @@ $headers = array(
 );
 $data = array(
         'attrs' => array('state', 'last_check_result', 'last_state_change'),
-        'filter' => "host.name == \"$host\" && service.name == \"https\"",
+        'filter' => "host.name == \"$host\" && service.name == \"vhost https\"",
 );
 
 $ch = curl_init();
@@ -23,6 +23,8 @@ curl_setopt_array($ch, array(
 
 $response = curl_exec($ch);
 if ($response === false) {
+	error_log('Could not access Icinga API');
+	http_response_code(500);
         die();
 }
 
@@ -30,11 +32,16 @@ $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 if ($code != 200) {
-        die();
+       	error_log("HTTP error $code when accessing Icinga API");
+	http_response_code(500);
+	die();
 }
 $response = json_decode($response, true);
 
-if (count($response['results']) != 1) {
+$count = count($response['results']);
+if ($count != 1) {
+       	error_log("Expected 1 result, got $count when accessing Icinga API");
+	http_response_code(500);
 	die();
 }
 
