@@ -1,4 +1,14 @@
-<?php require_once('common.php'); ?>
+<?php
+require_once('config.php');
+
+$filter = "host.name == \"$host\" && service.name == \"$service\"";
+
+require_once('icinga-status.php');
+
+$last_check = $icinga_service_data[$host][$service]['last_check_result']['execution_start'];
+$current_state = $icinga_service_data[$host][$service]['state'];
+$last_change = $icinga_service_data[$host][$service]['last_state_change'];
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
